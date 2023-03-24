@@ -1,12 +1,23 @@
-# Requisito
+# Projeto de Sistema de login
 
-PHP 7.4.6
-laravel 7
-Composer 1.10.7
+clone o repositório completo : git clone https://github.com/JacquelineCasali/login-php.git
 
-# instalando o laravel
+Linguagem Utilizada
+PHP Laravel
 
-para rodar o laravel
-php artisan serve
+Projeto - Backend
+
+# Requisitos
+
+PHP
+Laravel
+composer
+
+# Instalação
 
 npm install
+intale composer
+
+# Rodar projeto
+
+php artisan serve
