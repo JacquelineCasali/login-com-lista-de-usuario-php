@@ -1,11 +1,5 @@
 <x-guest-layout>
     <x-auth-card>
-       
-         
-         
-         
-         
-         
             <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -48,8 +42,6 @@
                         {{ __('Recupere Sua Senha') }}
                     </a>
                 @endif
-
-
                 <x-button class="ml-3">
                     {{ __('Login') }}
                 </x-button>

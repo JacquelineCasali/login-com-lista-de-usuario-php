@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -13,6 +12,7 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
+   
     /**
      * Display the registration view.
      *
@@ -33,12 +33,13 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        // valida o usuario
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+        // cria o usuario
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -50,5 +51,12 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+        
     }
+
+    public function visializar()
+    {
+        return view('auth.register');
+    }
+  
 }

@@ -8,6 +8,10 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\UsuarioController;
+
+
+
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -15,6 +19,7 @@ Route::middleware('guest')->group(function () {
                 ->name('register');
 
     Route::post('cadastro', [RegisteredUserController::class, 'store']);
+ 
 
     Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
@@ -35,6 +40,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+
     Route::get('verifica-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
 
@@ -51,6 +57,25 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirma-senha', [ConfirmablePasswordController::class, 'store']);
 
+
     Route::post('sair', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+ 
+// rota de leitura do usuario todos os usuarios
+Route::get('/dashboard/cadastro',function () {
+    return view('auth.register');
+             });
+// rota de leitura de um usuario
+Route::get('/dashboard/cadastro/{id}',[UsuarioController::class, 'usuario']
+         )->name('usuario');
+// rota de edição do usuario        
+// Route::get('/dashboard/editar', [RegisteredUserController::class, 'create'])
+// ->name('editar');
+// mostra na tela
+Route::get('/dashboard/editar/{id}',[UsuarioController::class, 'editarusuario']
+        )->name('editar');
+
+        Route::post('/dashboard/editar/{id}',[UsuarioController::class, 'editar']
+        )->name('editar');
+
 });

@@ -12,8 +12,8 @@
     />
         <!-- Scripts -->
          <link rel="stylesheet" href="{{asset('css/app.css')}}" />
-<script src='js/app.js' defer></script>
-<title>@yield('titulo')</title>
+<script src="{{asset('js/app.js')}}" defer></script>
+{{-- <title>@yield('titulo')</title> --}}
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
