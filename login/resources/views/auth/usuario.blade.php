@@ -28,13 +28,7 @@
                               value="{{$user->password}}"/>
             </div>
 
-            <!-- Confirm Password -->
-       
-  <a  href='/../'> voltar</a>
   
-
-   {{-- <a  href='/auth.login/'> voltar1</a> --}}
- 
     </x-auth-card>
    
 </x-app-layout>

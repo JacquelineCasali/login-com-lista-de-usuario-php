@@ -4,18 +4,23 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+// use App\Models\Usuario;
+
 use App\Providers\RouteServiceProvider;
 // use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class UsuarioController extends Controller
 {
+    // listar todos os usuarios dashboard 
+ public function dashboard(){
+    // $users=DB::select('SELECT id, name FROM users');
 
+    $user=User::all();
+    
+     return view('dashboard',['user'=> $user]);
 
-    // public function create()
-    // {
-    //     return view('auth.editar');
-    // }
+}
 
 // ver um usuario
 public function usuario($id){
@@ -37,25 +42,25 @@ public function editar(Request $request, $id)
             'email' => $request->email,
            
         ]);
+   
+
     // echo "Usuario editado com sucesso";
     
-        return view('dashboard');
-
-        // // valida o usuario
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        // ]);
-       
-
-        // event(new Registered($user));
-
-        // Auth::login($user);
-
-        // return redirect(RouteServiceProvider::HOME);
-        
+    return redirect()->intended(RouteServiceProvider::HOME);
+     
     }
+
+    public function excluir($id)
+    // excluir o usuario
+  {
+          $user=User::find($id);
+          $user->delete();
+     echo "Usuario excluido com sucesso";
+      
+  
+          
+  
+      }
 
 
 }

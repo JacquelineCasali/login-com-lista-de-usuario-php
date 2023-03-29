@@ -68,14 +68,17 @@ Route::get('/dashboard/cadastro',function () {
 // rota de leitura de um usuario
 Route::get('/dashboard/cadastro/{id}',[UsuarioController::class, 'usuario']
          )->name('usuario');
-// rota de edição do usuario        
-// Route::get('/dashboard/editar', [RegisteredUserController::class, 'create'])
-// ->name('editar');
+
 // mostra na tela
 Route::get('/dashboard/editar/{id}',[UsuarioController::class, 'editarusuario']
         )->name('editar');
 
-        Route::post('/dashboard/editar/{id}',[UsuarioController::class, 'editar']
+Route::post('/dashboard/editar/{id}',[UsuarioController::class, 'editar']
         )->name('editar');
+// exlui o usuario
+Route::get('/dashboard/excluir/{id}',[UsuarioController::class, 'excluir']
+            );
+
+
 
 });
